@@ -1,6 +1,10 @@
 package main.utils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Utils {
 
@@ -25,5 +29,23 @@ public class Utils {
 				distancia++;
 
 		return distancia;
+	}
+
+	public static List<String> obtenerInstancia(String ruta) {
+		List<String> textos = new ArrayList<String>();
+
+		try {
+			Scanner lector = new Scanner(new File(ruta));
+
+			while (lector.hasNextLine())
+				textos.add(lector.nextLine());
+
+			lector.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error al leer el archivo de instancia.");
+			e.printStackTrace();
+		}
+
+		return textos;
 	}
 }

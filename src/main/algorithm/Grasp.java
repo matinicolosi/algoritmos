@@ -45,4 +45,35 @@ public class Grasp {
 			e.printStackTrace();
 		}
 	}
+
+	public static String textoMasParecidoScoring(String rutaBaseInstancia, String nombreInstancia) {
+		String data = nombreInstancia;
+
+		List<String> textos = Utils.obtenerInstancia(rutaBaseInstancia.concat(nombreInstancia).concat(".txt"));
+
+		Integer iteraciones = 100;
+
+		String s = null;
+		String s_ = null;
+
+		Integer mejorResultadoDistanciaMaxima = null;
+		for (int i = 0; i < iteraciones; i++) {
+			s = RandomGreedy.textoMasParecido(textos);
+			s_ = LocalSearch.textoMasParecido(s, textos);
+
+			Integer distanciaMaxima = Utils.maximaDistancia(s_, textos);
+			if (mejorResultadoDistanciaMaxima == null || mejorResultadoDistanciaMaxima > distanciaMaxima)
+				mejorResultadoDistanciaMaxima = distanciaMaxima;
+
+			System.out.println("Iteracion " + i + " -> Mejor distancia maxima " + mejorResultadoDistanciaMaxima);
+			// Para el scoring ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			data = data.concat(System.lineSeparator()).concat(String.valueOf(i)).concat(";")
+					.concat(String.valueOf(mejorResultadoDistanciaMaxima));
+			// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		}
+
+		// Para el scoring ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		return data;
+		// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	}
 }
