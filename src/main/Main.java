@@ -16,18 +16,7 @@ import main.utils.Utils;
 public class Main {
 
 	public static void main(String[] args) {
-		List<String> instancia = Utils.obtenerInstancia(
-				"C:\\Users\\Matias\\Desktop\\instancias texto mas parecido_az\\instancias texto mas parecido_az_10_10_1.txt");
-
-		// Pruebas simples de cada algoritmo
-//		System.out.println("Greedy -> " + Utils.maximaDistancia(Greedy.textoMasParecido(instancia), instancia));
-//		System.out.println(
-//				"RandomGreedy -> " + Utils.maximaDistancia(RandomGreedy.textoMasParecido(instancia), instancia));
-//		System.out.println("LocalSearch -> "
-//				+ Utils.maximaDistancia(LocalSearch.textoMasParecido(instancia.get(0), instancia), instancia));
-//		System.out.println("LocalSearchOptimized -> "
-//				+ Utils.maximaDistancia(LocalSearchOptimized.textoMasParecido(instancia.get(0), instancia), instancia));
-//		Grasp.textoMasParecido(instancia);
+//		ejecutarPruebas();
 
 		// Ejecuciones para graficos de scoring
 		ejecutarInstanciasGrasp("C:\\Users\\Matias\\Desktop\\instancias texto mas parecido\\",
@@ -57,5 +46,20 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void ejecutarPruebas() {
+		List<String> instancia = Utils.obtenerInstancia(
+				"C:\\Users\\Matias\\Desktop\\instancias texto mas parecido_az\\instancias texto mas parecido_az_10_10_1.txt");
+
+		// Pruebas simples de cada algoritmo
+		System.out.println("Greedy -> " + Utils.maximaDistancia(Greedy.textoMasParecido(instancia), instancia));
+		System.out.println(
+				"RandomGreedy -> " + Utils.maximaDistancia(RandomGreedy.textoMasParecido(instancia), instancia));
+		System.out.println("LocalSearch -> "
+				+ Utils.maximaDistancia(LocalSearch.textoMasParecido(instancia.get(0), instancia), instancia));
+		System.out.println("LocalSearchOptimized -> "
+				+ Utils.maximaDistancia(LocalSearchOptimized.textoMasParecido(instancia.get(0), instancia), instancia));
+		Grasp.textoMasParecido(instancia);
 	}
 }
